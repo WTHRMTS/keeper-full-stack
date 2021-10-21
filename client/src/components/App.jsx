@@ -1,15 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
+// import NoteList from "./NoteList"
+import api from "../api"
 import CreateArea from "./CreateArea";
 
 function App() {
   const [notes, updateNotes] = useState([]);
-  console.log(notes);
-  function addItem(noteText) {
+
+  useEffect(() => {
+        async function getNotes() {
+            try {
+                const response = await api.getList()
+                updateNotes(response.data.data)
+            } catch(error) {
+                console.log('error', error);
+            }
+        }
+        getNotes();
+    }, []);
+
+  async function addItem(note) {
+    console.log(note)
+    await api.createItem(note)
     updateNotes(prevNotes => {
-      return [...prevNotes, noteText]
+      return [...prevNotes, note]
     });
   }
   function deleteItem(id) {
@@ -25,9 +41,10 @@ function App() {
         <Note 
         key={index} 
         id={index}
-        title={note.noteTitle} 
-        content={note.noteContent}
-        onDelete={deleteItem} />))}
+        title={note.title} 
+        content={note.content}
+        onDelete={deleteItem}
+      />))}
       <Footer />
     </div>
   );

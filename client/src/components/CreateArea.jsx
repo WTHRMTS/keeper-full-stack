@@ -7,8 +7,8 @@ import Zoom from '@material-ui/core/Zoom';
 function CreateArea(props) {
   const [isClicked, setClicked] = useState(false);
   const [note, setNote] = useState({
-    noteTitle: "",
-    noteContent: "",
+    title: "",
+    content: "",
   });
   function handleChange(event) {
     const { name, value } = event.target;
@@ -26,15 +26,15 @@ function CreateArea(props) {
   
   return (
     <div>
-      <form className="create-note">
-        {isClicked && <input onChange={handleChange} name="noteTitle" placeholder="Title" value={note.noteTitle} />}
-        <textarea onClick={handleClick} onChange={handleChange} name="noteContent" placeholder="Take a note..." rows={isClicked ? 3 : 1} value={note.noteContent}/>
+      <form className="create-note" action="/" method="post">
+        {isClicked && <input onChange={handleChange} name="title" placeholder="Title" value={note.title} />}
+        <textarea onClick={handleClick} onChange={handleChange} name="content" placeholder="Take a note..." rows={isClicked ? 3 : 1} value={note.content}/>
         <Zoom in={isClicked}>
           <Fab onClick={(event)=> {
             props.onAdd(note);
             setNote({
-                noteTitle: "",
-                noteContent: "",
+                title: "",
+                content: "",
               })
               event.preventDefault();
           }}><AddIcon /></Fab>

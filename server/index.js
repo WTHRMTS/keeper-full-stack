@@ -9,6 +9,7 @@ const app = express()
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(urlencoded({extended: true}));
+app.use(express.json());
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 

@@ -11,7 +11,7 @@ getList = async (req, res) => {
 
 createItem = (req, res) => {
     const body = req.body
-    console.log(body)
+    console.log(req.body)
     if (!body) {
         return res.status(400).json({
             success: false,

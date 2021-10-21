@@ -2,7 +2,8 @@
 const mongoose = require('mongoose');
 
 const Item = new mongoose.Schema ({
-    name: String
+    title: String,
+    content: String
 })
 
 // const Item = new mongoose.model("Item", itemsSchema);

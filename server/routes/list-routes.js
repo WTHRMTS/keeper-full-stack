@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.get("/", ListCtrl.getList);
 router.post("/", ListCtrl.createItem);
-router.delete("/delete", ListCtrl.deleteItem);
+router.delete("/:id", ListCtrl.deleteItem);
 
 module.exports = router;

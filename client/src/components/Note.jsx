@@ -7,7 +7,7 @@ function Note(props) {
     <div className="note">
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button onClick={() => {props.onDelete(props.id)}}><DeleteIcon /></button>
+      <button onClick={() => {props.onDelete(props.id, props.noteId)}}><DeleteIcon /></button>
     </div>
   );
 }

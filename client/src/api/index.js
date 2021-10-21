@@ -5,11 +5,11 @@ const api = axios.create({
 })
 
 export const getList = () => api.get('/');
-export function createItem(note) {
-    api.post('/', note)
-    console.log(note)
-};
-export const deleteItem = id => api.delete('/delete')
+export const createItem = (note) => {api.post('/', note)};
+export const deleteItem = (id) => {
+    console.log(id);
+    api.delete(`/${id}`, { params: {_id: id} });
+}
 
 
 const apis = {

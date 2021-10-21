@@ -19,6 +19,7 @@ function App() {
             }
         }
         getNotes();
+        // console.log(notes[0]._id);
     }, []);
 
   async function addItem(note) {
@@ -28,9 +29,10 @@ function App() {
       return [...prevNotes, note]
     });
   }
-  function deleteItem(id) {
+  async function deleteNote(id, noteId) {
+    await api.deleteItem(id);
     updateNotes(prevNotes => {
-      return prevNotes.filter((note, index) => {return index !== id;})
+      return prevNotes.filter((note, index) => {return index !== noteId;})
     });
   }
   return (
@@ -40,10 +42,11 @@ function App() {
       {notes.map((note, index) => (
         <Note 
         key={index} 
-        id={index}
+        noteId={index}
+        id={note._id}
         title={note.title} 
         content={note.content}
-        onDelete={deleteItem}
+        onDelete={deleteNote}
       />))}
       <Footer />
     </div>

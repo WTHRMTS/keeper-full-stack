@@ -42,10 +42,10 @@ createItem = (req, res) => {
         })
 }
 
-deleteItem = async (req, res) => {
-    const postId = req.body.id
-    console.log(postId)
-    await Item.findOneAndDelete({ _id: postId }, (err, item) => {
+deleteItem = (req, res) => {
+    const postId = req.params
+    console.log(postId.id)
+    Item.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

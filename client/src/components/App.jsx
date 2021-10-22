@@ -19,18 +19,24 @@ function App() {
             }
         }
         getNotes();
-        // console.log(notes[0]._id);
     }, []);
 
-  async function addItem(note) {
-    console.log(note)
-    await api.createItem(note)
+  function addItem(note) {
+    // console.log(note)
+    api.createItem(note)
+    // await api.getLatest()
+    // const response = api.getLatest(note.title);
+    // console.log(response.data.data);
     updateNotes(prevNotes => {
+        // const response = api.getList()
+        //         prevNotes = response.data.data
+        // return prevNotes;
       return [...prevNotes, note]
     });
   }
-  async function deleteNote(id, noteId) {
-    await api.deleteItem(id);
+  function deleteNote(id, noteId) {
+    api.deleteItem(id);
+    // api.getLatest(id);
     updateNotes(prevNotes => {
       return prevNotes.filter((note, index) => {return index !== noteId;})
     });

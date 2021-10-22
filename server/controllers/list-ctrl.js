@@ -9,9 +9,20 @@ getList = async (req, res) => {
     }).clone().catch(err => console.log(err))
 }
 
+getLatest = async (req, res) => {
+    // console.log(req.params.title);
+    res.render('/');
+    // await Item.find({}, (err, list) => {
+    // // await Item.findOne({}, {},{ sort: { 'created_at' : -1 } }, (err, note) => {
+    //     if (err) {
+    //         return res.status(400).json({ success: false, error: err })
+    //     }
+    //     return res.status(200).json({ success: true, data: list })
+    // }).clone().catch(err => console.log(err))
+}
 createItem = (req, res) => {
     const body = req.body
-    console.log(req.body)
+    // console.log(req.body)
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -61,6 +72,7 @@ deleteItem = (req, res) => {
 
 module.exports = {
     getList,
+    getLatest,
     createItem,
     deleteItem
 }

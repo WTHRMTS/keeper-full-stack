@@ -5,6 +5,9 @@ const api = axios.create({
 })
 
 export const getList = () => api.get('/');
+export const getLatest = (id) => {
+    // console.log(title);
+    api.get(`/${id}`)}
 export const createItem = (note) => {api.post('/', note)};
 export const deleteItem = (id) => {
     console.log(id);
@@ -14,6 +17,7 @@ export const deleteItem = (id) => {
 
 const apis = {
     getList,
+    getLatest,
     createItem,
     deleteItem
 }

@@ -27,8 +27,8 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note" action="/" method="post">
-        {isClicked && <input onChange={handleChange} name="title" placeholder="Title" value={note.title} />}
-        <textarea onClick={handleClick} onChange={handleChange} name="content" placeholder="Take a note..." rows={isClicked ? 3 : 1} value={note.content}/>
+      <input onClick={handleClick} onChange={handleChange} name="title" placeholder="Title" value={note.title} />
+      {isClicked && <textarea onClick={handleClick} onChange={handleChange} name="content" placeholder="Take a note..." rows={isClicked ? 3 : 1} value={note.content}/>}
         <Zoom in={isClicked}>
           <Fab onClick={(event)=> {
             props.onAdd(note);
@@ -40,6 +40,7 @@ function CreateArea(props) {
           }}><AddIcon /></Fab>
         </Zoom>
       </form>
+      {!isClicked && <div><br /><br /><br /><br /></div>}
     </div>
   );
 }

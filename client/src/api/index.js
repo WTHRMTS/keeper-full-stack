@@ -5,12 +5,12 @@ const api = axios.create({
 })
 
 export const getList = () => api.get('/');
-export const getLatest = (id) => {
+export const getLatest = (title) => {
     // console.log(title);
-    api.get(`/${id}`)}
+    api.get(`/${title}`)}
 export const createItem = (note) => {api.post('/', note)};
 export const deleteItem = (id) => {
-    console.log(id);
+    // console.log(id);
     api.delete(`/${id}`, { params: {_id: id} });
 }
 

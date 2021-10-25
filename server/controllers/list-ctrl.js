@@ -60,13 +60,12 @@ deleteItem = (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!item) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Item not found` })
-        }
-
-        return res.status(200).json({ success: true, data: item })
+        // if (!item) {
+        //     return res
+        //         .status(404)
+        //         .json({ success: false, error: `Item not found` })
+        // }
+        return res.status(200).json({ success: true, data: req.params })
     }).clone().catch(err => console.log(err))
 }
 

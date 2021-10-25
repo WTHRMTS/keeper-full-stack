@@ -2,13 +2,11 @@ import React, {useState, useEffect} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
-// import NoteList from "./NoteList"
 import api from "../api"
 import CreateArea from "./CreateArea";
 
 function App() {
   const [notes, updateNotes] = useState([]);
-
   useEffect(() => {
         async function getNotes() {
             try {
@@ -22,21 +20,14 @@ function App() {
     }, []);
 
   function addItem(note) {
-    // console.log(note)
     api.createItem(note)
-    // await api.getLatest()
-    // const response = api.getLatest(note.title);
-    // console.log(response.data.data);
     updateNotes(prevNotes => {
-        // const response = api.getList()
-        //         prevNotes = response.data.data
-        // return prevNotes;
       return [...prevNotes, note]
     });
+    window.location.reload(true);
   }
   function deleteNote(id, noteId) {
     api.deleteItem(id);
-    // api.getLatest(id);
     updateNotes(prevNotes => {
       return prevNotes.filter((note, index) => {return index !== noteId;})
     });

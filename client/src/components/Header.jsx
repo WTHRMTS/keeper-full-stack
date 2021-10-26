@@ -1,10 +1,10 @@
 import React from "react";
-import Highlight from "@material-ui/icons/Highlight";
+import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 
 function Header() {
   return (
     <header>
-      <h1><Highlight /><b>Keeper</b></h1>
+      <h1><WysiwygIcon /><b>Notekeeper</b></h1>
     </header>
   );
 }

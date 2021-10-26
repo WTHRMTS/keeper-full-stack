@@ -6,7 +6,6 @@ const router = express.Router();
 
 
 router.get("/", ListCtrl.getList);
-router.get("/:title", ListCtrl.getLatest)
 router.post("/", ListCtrl.createItem);
 router.delete("/:id", ListCtrl.deleteItem);
 
